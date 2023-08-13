@@ -15,6 +15,14 @@ public class ListNode {
 
     public void addList(int data){
         Node node = new Node(data);
+        if (first ==null){
+            first = node;
+            first.next = null;
+            cur = first;
+        } else {
+            cur.next = node;
+            cur = node;
+        }
     }
     public  void  createNodeList() {
         Scanner sc = new Scanner(System.in);

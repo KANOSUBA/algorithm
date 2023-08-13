@@ -1,10 +1,13 @@
 package LinkList;
+
+import com.sun.org.apache.bcel.internal.generic.PUSH;
+
 //两个单链表相交的一些列问题
-//给定两个可能有环也可能五环的单链表，头节点head1和head2。
+//给定两个可能有环也可能无环的单链表，头节点head1和head2。
 //请实现一个函数，如果两个链表相交，请返回相交的第一个节点。如果不相交，返回NULL
-public class intersectList {
+public class IntersectList {
 
-
+    public IntersectList(){}
     public Node getIntersectNode(Node head1,Node head2){
         if (head1 ==null || head2==null){
             return null;
@@ -13,6 +16,7 @@ public class intersectList {
         Node node2 = head2;
         Node loop1 = isLoopList(node1);
         Node loop2 = isLoopList(node2);
+
         if (loop1==null && loop2==null){
             return noLoop(head1, head2);
         } else if (loop1 !=null && loop2 != null){
@@ -32,14 +36,13 @@ public class intersectList {
         Node slow = head;
         slow = slow.next;
         while(fast != slow){
+            if (fast.next == null || fast.next.next == null){
+                return null;
+            }
             slow = slow.next;
             fast = fast.next.next;
         }
-        if (fast == null){
-            return null;
-        } else {
-            fast = head;
-        }
+        fast = head;
         while(fast != slow){
             fast = fast.next;
             slow = slow.next;
@@ -63,6 +66,7 @@ public class intersectList {
             n--;
             cur2 = cur2.next;
         }
+
         if (cur1 != cur2){
             return null;
         }
@@ -71,16 +75,17 @@ public class intersectList {
         cur2 = cur1 == head1 ? head2 : head1;//谁短，谁的头变成cur2
 
         n = Math.abs(n);
+
         while(n != 0){
             cur1 = cur1.next;
             n--;
         }
-        if (cur1.next==cur2.next){
-            return cur1.next;
-        } else
-        {
-            return null;
+
+        while(cur1 != cur2){
+            cur1=cur1.next;
+            cur2=cur2.next;
         }
+        return cur1;
     }
 
     public Node hasLoop(Node head1,Node head2,Node loop1,Node loop2){
