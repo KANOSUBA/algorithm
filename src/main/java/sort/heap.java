@@ -6,6 +6,7 @@ public class heap {
         heapSort(arr);
         for (int i : arr) {
             System.out.print(i+" ");
+
         }
     }
     public static void heapSort(int[] arr){

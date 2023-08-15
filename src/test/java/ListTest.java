@@ -1,6 +1,6 @@
 import LinkList.*;
 
-public class test {
+public class ListTest {
     public static void main(String[] args) {
         ListNode listNode1 = new ListNode();
         ListNode listNode2 = new ListNode();
