@@ -54,20 +54,20 @@ public class NonRecursiveTraversal {
     //3.判断该节点是否有右孩子，有右孩子则将右孩子进栈
     //4.重复
     public void InOrderTraversal(TNode head){
+        if (head == null){
+
+            return ;
+        }
         Stack<TNode> stack = new Stack<>();
-        TNode cur = head;
-        stack.push(head);
-        while(!stack.isEmpty()){
-            if (cur.left!=null){
-                stack.push(cur.left);
-                cur = cur.left;
+
+        while(!stack.isEmpty() || head!= null){
+            if (head!=null){
+                stack.push(head);
+                head = head.left;
             } else {
-                cur = stack.pop();
-                System.out.print(cur.data + " ");
-                if (cur.right != null){
-                    stack.push(cur.right);
-                    cur=cur.right;
-                }
+                head = stack.pop();
+                System.out.print(head.data + " ");
+                head = head.right;
             }
         }
     }

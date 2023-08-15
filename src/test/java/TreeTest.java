@@ -1,7 +1,4 @@
-import BinaryTree.BTree;
-import BinaryTree.NonRecursiveTraversal;
-import BinaryTree.RecursionTraversal;
-import BinaryTree.TNode;
+import BinaryTree.*;
 
 public class TreeTest {
     public static void main(String[] args) {
@@ -27,5 +24,12 @@ public class TreeTest {
         nonRecursiveTraversal.InOrderTraversal(tree);
         System.out.println(" ");
         nonRecursiveTraversal.PostOrderTraversal(tree);
+
+        System.out.println(" ");
+
+        WidthFirstTraverse widthFirstTraverse = new WidthFirstTraverse();
+        System.out.println("以下是二叉树的宽度");
+        widthFirstTraverse.Width1(tree);
+        widthFirstTraverse.Width2(tree);
     }
 }
